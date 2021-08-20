@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+    <section class="bg-warning vh-100">
+        <h1 class="text-center text-white">My To Do List:</h1>
+        <div class="d-flex text-center w-25 mx-auto">
+            <input id="todo-input" class="form-control rounded-0 fw-bolder fs-5" type="text">
+            <button id="add-btn" class="btn btn-primary rounded-0">Add</button>
+        </div>
+        <div class=" w-25 mx-auto mt-2">
+            <ul id="list" class="w-100 list-unstyled">
+                <div class="list-item mb-2 d-flex">
+                    <li class="w-100 fs-6 fw-bolder bg-info text-white p-2">1.Reading </li>
+                    <button class="btn rounded-0 btn-danger p-2"><i class="fas px-2 fa-trash-alt"></i></button>
+                </div>
+
+
+            </ul>
+        </div>
+    </section>
+    <script>
+        var serial = 2;
+        document.getElementById('add-btn').addEventListener('click', function () {
+            var todoValue = document.getElementById('todo-input').value;
+
+            var newElement = document.createElement("li")
+            var text = `${serial}. ${todoValue}`
+            var newItem = newElement.innerHTML = text;
+            newElement.setAttribute('class', 'w-100')
+            newElement.classList.add('fs-6', 'fw-bolder', 'bg-info', 'text-white', 'p-2', 'mb-2');
+
+            var divContainer = document.createElement('div')
+            divContainer.appendChild(newElement)
+            divContainer.setAttribute('class', 'mb-2')
+            document.getElementById('list').appendChild(divContainer)
+
+            serial++
+            document.getElementById('todo-input').value = ''
+        })
+
+    </script>
+</body>
+
+</html>
