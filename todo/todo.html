@@ -21,7 +21,7 @@
             <ul id="list" class="w-100 list-unstyled">
                 <div class="list-item mb-2 d-flex">
                     <li class="w-100 fs-6 fw-bolder bg-info text-white p-2">1.Reading </li>
-                    <button class="btn rounded-0 btn-danger p-2"><i class="fas px-2 fa-trash-alt"></i></button>
+                    <button class="btn rounded-0 btn-danger p-2">Delete</button>
                 </div>
 
 
@@ -37,16 +37,30 @@
             var text = `${serial}. ${todoValue}`
             var newItem = newElement.innerHTML = text;
             newElement.setAttribute('class', 'w-100')
-            newElement.classList.add('fs-6', 'fw-bolder', 'bg-info', 'text-white', 'p-2', 'mb-2');
+            newElement.classList.add('fs-6', 'fw-bolder', 'bg-info', 'text-white', 'p-2');
 
             var divContainer = document.createElement('div')
             divContainer.appendChild(newElement)
             divContainer.setAttribute('class', 'mb-2')
+            divContainer.classList.add('list-item', 'd-flex')
             document.getElementById('list').appendChild(divContainer)
+
+            var deleteBtn = document.createElement('button')
+            deleteBtn.setAttribute('class', 'btn')
+            deleteBtn.classList.add('rounded-0', 'btn-danger', 'p-2')
+            deleteBtn.innerText = "Delete"
+            divContainer.appendChild(deleteBtn)
 
             serial++
             document.getElementById('todo-input').value = ''
+           
         })
+
+
+        document.getElementById('list').addEventListener('click', (a) => {
+           a.target.parentElement.remove()
+        })
+
 
     </script>
 </body>
